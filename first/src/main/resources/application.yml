@@ -6,3 +6,21 @@ my:
   max: ${random.int(10)}
   value: ${random.value}
   greeting: hi,i'm ${my.name}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+server:
+  port: 9001
+
+
+spring:
+  profiles:
+    active: dev
