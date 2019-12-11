@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 public class RestTestController {
+
     @GetMapping("/testRest")
     public String testRest(){
         RestTemplate restTemplate=new RestTemplate();
