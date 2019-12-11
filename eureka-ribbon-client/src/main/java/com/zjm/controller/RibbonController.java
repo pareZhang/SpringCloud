@@ -23,7 +23,6 @@ public class RibbonController {
     public String hello(@RequestParam(required = false,defaultValue = "pareZhang") String name){
         return ribbonService.hello(name);
     }
-
     /**
      * 负载均衡器的核心类为LoadBalancerClient,可以获取服务提供者的实例信息。
      * @return
