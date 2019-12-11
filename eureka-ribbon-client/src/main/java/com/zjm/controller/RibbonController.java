@@ -24,6 +24,10 @@ public class RibbonController {
         return ribbonService.hello(name);
     }
 
+    /**
+     * 负载均衡器的核心类为LoadBalancerClient,可以获取服务提供者的实例信息。
+     * @return
+     */
     @GetMapping("/testRibbon")
     public String testRibbon(){
         ServiceInstance instance=loadBalancer.choose("eureka-client");
