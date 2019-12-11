@@ -18,10 +18,12 @@ public class RibbonController {
     private RibbonService ribbonService;
     @Autowired
     private LoadBalancerClient loadBalancer;
+
     @GetMapping("/hello")
     public String hello(@RequestParam(required = false,defaultValue = "pareZhang") String name){
         return ribbonService.hello(name);
     }
+
     @GetMapping("/testRibbon")
     public String testRibbon(){
         ServiceInstance instance=loadBalancer.choose("eureka-client");
