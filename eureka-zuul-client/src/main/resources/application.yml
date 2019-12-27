@@ -1,0 +1,24 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 5000
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    helloapi:
+      path: /helloapi/**
+      serviceId: eureka-client
+      #如果不需要Ribbon做负载均衡，可以指定服务实例的url,用zuul.routes.helloapi.url配置指定，
+      #此时就不需要配置 serviceId: eureka-client，一旦指定了Url,Zuul就不能做负载均衡了，而是直接访问指定的Url，配置如下
+    # url: http://localhost:8762 此时重新启动service-zuul-service服务，请求http://localhost:5000/helloapi/hello?name=pareZhang
+      #只会显示如下内容：hello pareZhang,i am from port:8762
+    ribbonapi:
+      path: /ribbonapi/**
+      serviceId: eureka-ribbon-client
+    feignapi:
+      path: /feignapi/**
+      serviceId: eureka-feign-client
